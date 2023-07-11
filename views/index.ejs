@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="http://localhost:5001/favicon.ico">
+    <link rel="icon" href="/favicon.ico">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Benchmark</title>
+</head>
+<body>
+    <h1>Website Benchmark</h1>
+    <div class="formbox">
+      <form action="/api" method="POST">
+        <div class="form-outline">
+          <input type="text" name="url" />
+          <label class="form-label">URL</label>
+        </div>
+        <div class="form-outline">
+          <input type="text" name="searchQuery" />
+          <label class="form-label">Search Query</label>
+        </div>
+        <button type="submit" name="submit">Submit</button>
+      </form>
+      
+    </div>
+    <% if (result) { %>
+        <h2>Results:</h2>
+        <p>Page Load Time: <%= result.pageLoadTime %> ms</p>
+        <p>Time to First Byte: <%= result.ttfb %> ms</p>
+        <p>Is Compatible: <%= result.isCompatible ? 'Yes' : 'No' %></p>
+        <p>Rank: <%= result.rank %></p>
+        <p>Mobile Responsiveness Screenshot: <img src="<%= result.mobile_responsiveness %>"></p>
+        <h3>Security Results:</h3>
+        <p>SSL Encryption: <%= result.security['SSL Encryption'] %></p>
+        <p>Secure Login System: <%= result.security['Secure Login System'] %></p>
+    <% } %>
+</body>
+</html>
